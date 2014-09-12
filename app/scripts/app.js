@@ -2,14 +2,32 @@
 
 /**
  * @ngdoc overview
- * @name honorarModulApp
+ * @name testApp
  * @description
- * # honorarModulApp
+ * # testApp
  *
  * Main module of the application.
  */
 angular
-  .module('honorarModulApp', [
+  .module('testApp', [
+    'ngAnimate',
     'ngCookies',
-    'ngSanitize'
-  ]);
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
